@@ -32,16 +32,11 @@
   font-family: 'JetBrains Mono', monospace;
   white-space: nowrap;
 
-  .logo-bracket {
-    color: var(--accent-cyan);
-  }
-
-  .logo-name {
-    color: var(--text-primary);
-    margin: 0 2px;
-  }
+  .logo-bracket { color: var(--accent-cyan); }
+  .logo-name { color: var(--text-primary); margin: 0 2px; }
 }
 
+// ── Desktop nav ──────────────────────────────────────────
 .nav-links {
   display: flex;
   list-style: none;
@@ -73,14 +68,12 @@
 
     &:hover {
       color: var(--text-primary);
-      background: rgba(255,255,255,0.05);
-
+      background: rgba(255, 255, 255, 0.05);
       &::after { width: 60%; }
     }
 
     &.active {
       color: var(--accent-cyan);
-
       &::after { width: 60%; }
     }
   }
@@ -104,6 +97,7 @@
   }
 }
 
+// ── Hamburger ─────────────────────────────────────────────
 .hamburger {
   display: none;
   flex-direction: column;
@@ -113,6 +107,8 @@
   cursor: pointer;
   padding: 4px;
   margin-left: auto;
+  position: relative;
+  z-index: 1100; // always on top of everything
 
   span {
     display: block;
@@ -130,43 +126,56 @@
   }
 }
 
-@keyframes menuFadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
+// ── Mobile overlay (rendered only when open via @if in template) ──
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes linksIn {
+  from { opacity: 0; transform: translateY(-16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: rgba(6, 9, 26, 0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: overlayIn 0.25s ease forwards;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: linksIn 0.3s ease 0.05s both;
+
+  li a {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 14px 40px;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--accent-cyan);
+      background: rgba(0, 212, 255, 0.08);
+    }
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-    position: relative;
-    z-index: 1001; // always above the full-screen overlay
-  }
-
-  .hire-btn { display: none; }
-
-  .nav-links {
-    display: none; // completely hidden — no overlap, no pointer events
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-    background: rgba(6, 9, 26, 0.97);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin: 0;
-
-    &.open {
-      display: flex;
-      animation: menuFadeIn 0.3s ease forwards;
-    }
-
-    li a {
-      font-size: 20px;
-      padding: 12px 32px;
-    }
-  }
+  .nav-links  { display: none; }  // desktop nav hidden on mobile
+  .hire-btn   { display: none; }
+  .hamburger  { display: flex; }
 }
