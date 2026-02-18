@@ -1,0 +1,48 @@
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Get In <span>Touch</span></h2>
+      <div class="subtitle-line"><p>Let's build something great together</p></div>
+    </div>
+
+    <div class="contact-wrapper" #animEl>
+      <div class="contact-intro">
+        <h3>Let's <span class="gradient-text">Connect</span></h3>
+        <p>
+          I'm currently open to new opportunities and collaborations. Whether you have a project
+          in mind, want to discuss Angular architecture, or just want to say hi — my inbox
+          is always open!
+        </p>
+        <p>
+          I'm passionate about building exceptional web experiences and would love to bring
+          that expertise to your team or project.
+        </p>
+      </div>
+
+      <div class="contact-cards">
+        @for (info of contactInfo; track info.label) {
+          <div class="contact-card" [class]="'contact-' + info.color" #animEl>
+            <div class="cc-icon">{{ info.icon }}</div>
+            <div class="cc-body">
+              <span class="cc-label">{{ info.label }}</span>
+              @if (info.href) {
+                <a [href]="info.href" class="cc-value" [class]="'value-' + info.color">{{ info.value }}</a>
+              } @else {
+                <span class="cc-value">{{ info.value }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="cta-area" #animEl>
+        <a href="mailto:neeraj130540@gmail.com" class="cta-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Send Me an Email
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

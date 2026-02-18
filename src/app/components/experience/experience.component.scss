@@ -1,0 +1,219 @@
+.experience-section {
+  background: var(--bg-secondary);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+  }
+}
+
+.timeline {
+  position: relative;
+  padding: 20px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+    transform: translateX(-50%);
+    opacity: 0.3;
+  }
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0 24px;
+  align-items: start;
+  margin-bottom: 48px;
+  position: relative;
+
+  .timeline-content {
+    grid-column: 1;
+  }
+
+  .timeline-dot {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    padding-top: 28px;
+  }
+
+  &.reverse {
+    .timeline-content {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .timeline-dot {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+}
+
+.timeline-dot {
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  &.dot-cyan::after { background: var(--accent-cyan); box-shadow: 0 0 16px rgba(0,212,255,0.5); }
+  &.dot-purple::after { background: var(--accent-purple); box-shadow: 0 0 16px rgba(124,58,237,0.5); }
+  &.dot-pink::after { background: var(--accent-pink); box-shadow: 0 0 16px rgba(236,72,153,0.5); }
+}
+
+.dot-pulse {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(0,212,255,0.3);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0; }
+}
+
+.exp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: var(--transition);
+
+  &:hover {
+    border-color: rgba(0, 212, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  }
+}
+
+.exp-header {
+  margin-bottom: 20px;
+}
+
+.exp-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.current-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.exp-period {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.exp-company {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+
+  &.text-cyan { color: var(--accent-cyan); }
+  &.text-purple { color: #a78bfa; }
+  &.text-pink { color: var(--accent-pink); }
+}
+
+.exp-role {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.exp-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+
+  svg { color: var(--text-muted); }
+}
+
+.exp-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  li {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+
+    .bullet {
+      flex-shrink: 0;
+      font-size: 10px;
+      margin-top: 4px;
+
+      &.b-cyan { color: var(--accent-cyan); }
+      &.b-purple { color: #a78bfa; }
+      &.b-pink { color: var(--accent-pink); }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline::before { left: 20px; }
+
+  .timeline-item {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto;
+
+    .timeline-dot {
+      grid-column: 1;
+      grid-row: 1;
+      padding-top: 24px;
+    }
+
+    .timeline-content {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    &.reverse {
+      .timeline-dot {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .timeline-content {
+        grid-column: 2;
+        grid-row: 1;
+      }
+    }
+  }
+}

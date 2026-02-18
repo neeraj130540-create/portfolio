@@ -1,0 +1,63 @@
+<section id="awards" class="section awards-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Awards & <span>Education</span></h2>
+      <div class="subtitle-line"><p>Recognition & academic background</p></div>
+    </div>
+
+    <div class="awards-edu-grid">
+      <div class="awards-col">
+        <h3 class="col-title">
+          <span class="col-icon">🏆</span>
+          Achievements
+        </h3>
+        <div class="awards-list">
+          @for (award of awards; track award.title) {
+            <div class="award-card" [class]="'award-' + award.color" #animEl>
+              <div class="award-emoji">{{ award.icon }}</div>
+              <div class="award-body">
+                <div class="award-header">
+                  <h4>{{ award.title }}</h4>
+                  <span class="award-date">{{ award.date }}</span>
+                </div>
+                <p>{{ award.description }}</p>
+                <ul class="award-bullets">
+                  @for (hl of award.highlights; track hl) {
+                    <li>✓ {{ hl }}</li>
+                  }
+                </ul>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="edu-col">
+        <h3 class="col-title">
+          <span class="col-icon">🎓</span>
+          Education
+        </h3>
+        <div class="edu-list">
+          @for (edu of education; track edu.institution) {
+            <div class="edu-card" #animEl>
+              <div class="edu-icon">{{ edu.icon }}</div>
+              <div class="edu-body">
+                <h4>{{ edu.degree }}</h4>
+                <p class="edu-institution">{{ edu.institution }}</p>
+                <div class="edu-meta">
+                  <span class="edu-period">{{ edu.period }}</span>
+                  <span class="edu-loc">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    </svg>
+                    {{ edu.location }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

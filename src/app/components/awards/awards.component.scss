@@ -1,0 +1,191 @@
+.awards-section {
+  background: var(--bg-secondary);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  }
+}
+
+.awards-edu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.col-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+
+  .col-icon { font-size: 20px; }
+}
+
+.awards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.award-card {
+  display: flex;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 16px 0 0 16px;
+  }
+
+  &.award-gold::before { background: linear-gradient(180deg, #f59e0b, #fbbf24); }
+  &.award-cyan::before { background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple)); }
+
+  &:hover {
+    transform: translateX(4px);
+    border-color: rgba(0,212,255,0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+}
+
+.award-emoji {
+  font-size: 32px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.award-body {
+  flex: 1;
+}
+
+.award-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+}
+
+.award-date {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
+  white-space: nowrap;
+  padding: 3px 8px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+}
+
+.award-body > p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.award-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  li {
+    font-size: 13px;
+    color: var(--accent-green);
+    font-weight: 500;
+  }
+}
+
+// Education
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edu-card {
+  display: flex;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: var(--transition);
+
+  &:hover {
+    border-color: rgba(124,58,237,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  }
+}
+
+.edu-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.edu-body {
+  h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .edu-institution {
+    font-size: 14px;
+    color: #a78bfa;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+}
+
+.edu-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.edu-period {
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
+}
+
+.edu-loc {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+
+  svg { color: var(--accent-pink); }
+}
+
+@media (max-width: 768px) {
+  .awards-edu-grid { grid-template-columns: 1fr; gap: 40px; }
+}

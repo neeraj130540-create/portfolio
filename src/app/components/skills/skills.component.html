@@ -1,0 +1,41 @@
+<section id="skills" class="section skills-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Technical <span>Skills</span></h2>
+      <div class="subtitle-line"><p>Technologies & tools I work with</p></div>
+    </div>
+
+    <div class="skills-categories" #animEl>
+      @for (cat of skillCategories; track cat.title) {
+        <div class="category-card" [class]="'card-' + cat.color">
+          <div class="cat-header">
+            <span class="cat-icon">{{ cat.icon }}</span>
+            <h3>{{ cat.title }}</h3>
+          </div>
+          <div class="skill-tags">
+            @for (skill of cat.skills; track skill) {
+              <span class="skill-chip" [class]="'chip-' + cat.color">{{ skill }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="proficiency-section fade-in" #animEl>
+      <h3 class="prof-title">Proficiency Levels</h3>
+      <div class="proficiency-grid">
+        @for (item of proficiencies; track item.name) {
+          <div class="prof-item">
+            <div class="prof-header">
+              <span class="prof-name">{{ item.name }}</span>
+              <span class="prof-percent gradient-text">{{ item.level }}%</span>
+            </div>
+            <div class="prof-bar">
+              <div class="prof-fill" [style.width.%]="item.level"></div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

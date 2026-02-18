@@ -1,0 +1,129 @@
+.contact-section {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-pink), transparent);
+  }
+}
+
+.contact-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-intro {
+  margin-bottom: 48px;
+
+  h3 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-align: left;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 16px 0 0 16px;
+  }
+
+  &.contact-cyan::before { background: var(--accent-cyan); }
+  &.contact-purple::before { background: var(--accent-purple); }
+  &.contact-pink::before { background: var(--accent-pink); }
+
+  &:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+
+    &.contact-cyan { border-color: rgba(0,212,255,0.3); }
+    &.contact-purple { border-color: rgba(124,58,237,0.3); }
+    &.contact-pink { border-color: rgba(236,72,153,0.3); }
+  }
+}
+
+.cc-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.cc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .cc-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .cc-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: var(--transition);
+
+    &.value-cyan:hover { color: var(--accent-cyan); }
+    &.value-purple:hover { color: #a78bfa; }
+  }
+}
+
+.cta-area {
+  margin-top: 8px;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  color: white;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 212, 255, 0.35);
+  }
+}

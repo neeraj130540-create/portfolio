@@ -1,0 +1,39 @@
+<section id="projects" class="section projects-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Featured <span>Projects</span></h2>
+      <div class="subtitle-line"><p>Work I'm proud of</p></div>
+    </div>
+
+    <div class="projects-grid">
+      @for (project of projects; track project.name; let i = $index) {
+        <div class="project-card" [class]="'card-accent-' + project.color + (i === 0 ? ' featured' : '')" #animEl>
+          <div class="card-top">
+            <div class="card-icon-wrap" [class]="'icon-' + project.color">
+              <span class="card-icon">{{ project.icon }}</span>
+            </div>
+            <div class="card-period">{{ project.period }}</div>
+          </div>
+
+          <h3 class="card-title" [class]="'text-' + project.color">{{ project.name }}</h3>
+          <p class="card-desc">{{ project.description }}</p>
+
+          <ul class="card-highlights">
+            @for (h of project.highlights.slice(0, 4); track h) {
+              <li>
+                <span class="hl-dot" [class]="'dot-' + project.color">◆</span>
+                {{ h }}
+              </li>
+            }
+          </ul>
+
+          <div class="card-tech">
+            @for (tech of project.tech; track tech) {
+              <span class="tech-tag" [class]="'tag-' + project.color">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
